@@ -36,7 +36,7 @@ function startGame() {
 }
 function startGame20() {
     // ボタンの無効化
-    document.gameForm.start.disabled = true;
+    document.gameForm.start20.disabled = true;
     document.gameForm.ranking.disabled = true;
     
     // タップカウンターリセット
