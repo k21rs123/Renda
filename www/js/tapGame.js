@@ -33,6 +33,19 @@ function startGame() {
     // タイマーを起動
     countTime(countTimer);
 }
+function startGame20() {
+    // ボタンの無効化
+    document.gameForm.start.disabled = true;
+    document.gameForm.ranking.disabled = true;
+    
+    // タップカウンターリセット
+    this.counter = 0;
+    $("#list-page strong").html(String(0));
+    // タイマーリセット
+    this.countTimer = 23;
+    // タイマーを起動
+    countTime20(countTimer);
+}
 
 // 【mBaaS】データの保存
 function saveScore (name, score) {
@@ -40,6 +53,8 @@ function saveScore (name, score) {
     var GameScore = ncmb.DataStore("GameScore");
 // クラスインスタンスを生成
 var gameScore = new GameScore();
+// 保存先クラスを作成
+var highScore = ncmb.DataStore("GameScore");
 // 値を設定
 gameScore.set("name", name);
 gameScore.set("score", score);
@@ -53,6 +68,20 @@ gameScore.save()
              // 保存に失敗した場合の処理
              console.log("保存に失敗しました。エラー:" + error); 
          });
+         
+// scoreの降順でデータ5件を取得するように設定する
+highScore.order("score", true)
+.limit(5) .fetchAll()
+.then(function(results){
+// 検索に成功した場合の処理
+console.log("検索に成功しました。");
+// テーブルにデータをセット
+setData(results);
+})
+.catch(function(error){
+// 検索に失敗した場合の処理
+console.log("検索に失敗しました。エラー:" +error);
+});
     
     
     
@@ -74,6 +103,27 @@ function countTime(time) {
             this.tapFlag = false;
             $("#list-page p").html(String(time-10));
         } else if (time == 10) {
+            this.tapFlag = true;
+            $("#list-page p").html("スタート！");
+        } else {
+            this.tapFlag = true;
+            $("#list-page p").html(String(time));
+        }
+        this.countTimer -= 1;
+        // １秒後にcountTime()を呼び出す
+        setTimeout("countTime(countTimer)",1000);
+    } else {
+        this.tapFlag = false;
+        $("#list-page p").html("タイムアップ！");
+        imputName(this.counter);
+    }    
+}
+function countTime20(time) {
+    if (time > 0){
+        if (time >= 21) {
+            this.tapFlag = false;
+            $("#list-page p").html(String(time-20));
+        } else if (time == 20) {
             this.tapFlag = true;
             $("#list-page p").html("スタート！");
         } else {
