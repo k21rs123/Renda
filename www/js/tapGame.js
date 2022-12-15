@@ -131,7 +131,7 @@ function countTime20(time) {
             this.tapFlag = true;
             $("#list-page p").html(String(time));
         }
-        this.countTimer -= 1;
+        this.countTimer20 -= 1;
         // １秒後にcountTime()を呼び出す
         setTimeout("countTime2(countTimer20)",1000);
     } else {
