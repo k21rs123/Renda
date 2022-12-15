@@ -14,6 +14,7 @@
 var ncmb = new NCMB(this.APPLICATION_KEY, this.CLIENT_KEY);
 // タイマー設定
 var countTimer = 13;
+var countTimer20 = 23;
 // タップ回数カウンター
 var counter = 0;
 // 「tapFlag」的のタップ可否設定
@@ -42,9 +43,9 @@ function startGame20() {
     this.counter = 0;
     $("#list-page strong").html(String(0));
     // タイマーリセット
-    this.countTimer = 23;
+    this.countTimer20 = 23;
     // タイマーを起動
-    countTime20(countTimer);
+    countTime20(countTimer20);
 }
 
 // 【mBaaS】データの保存
@@ -132,7 +133,7 @@ function countTime20(time) {
         }
         this.countTimer -= 1;
         // １秒後にcountTime()を呼び出す
-        setTimeout("countTime(countTimer)",1000);
+        setTimeout("countTime2(countTimer20)",1000);
     } else {
         this.tapFlag = false;
         $("#list-page p").html("タイムアップ！");
