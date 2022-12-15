@@ -133,7 +133,7 @@ function countTime20(time) {
         }
         this.countTimer20 -= 1;
         // １秒後にcountTime()を呼び出す
-        setTimeout("countTime2(countTimer20)",1000);
+        setTimeout("countTime20(countTimer20)",1000);
     } else {
         this.tapFlag = false;
         $("#list-page p").html("タイムアップ！");
