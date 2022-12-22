@@ -20,11 +20,13 @@ var counter = 0;
 var counter20 = 0;
 // 「tapFlag」的のタップ可否設定
 var tapFlag = false;
+var tapFlag20 = false;
 
 // 「Start」ボタン押下時の処理
 function startGame() {
     // ボタンの無効化
     document.gameForm.start.disabled = true;
+    document.gameForm.start20.disabled = true;
     document.gameForm.ranking.disabled = true;
     
     // タップカウンターリセット
@@ -38,6 +40,7 @@ function startGame() {
 function startGame20() {
     // ボタンの無効化
     document.gameForm.start20.disabled = true;
+    document.gameForm.start.disabled = true;
     document.gameForm.ranking.disabled = true;
     
     // タップカウンターリセット
