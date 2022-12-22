@@ -40,7 +40,7 @@ function startGame20() {
     document.gameForm.ranking.disabled = true;
     
     // タップカウンターリセット
-    this.counter = 0;
+    this.counter20 = 0;
     $("#list-page strong").html(String(0));
     // タイマーリセット
     this.countTimer20 = 23;
@@ -137,7 +137,7 @@ function countTime20(time) {
     } else {
         this.tapFlag = false;
         $("#list-page p").html("タイムアップ！");
-        imputName(this.counter);
+        imputName(this.counter20);
     }    
 }
 
