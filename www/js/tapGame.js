@@ -154,6 +154,7 @@ function imputName(count){
     }
     // ボタンの有効化
     document.gameForm.start.disabled = false;
+    document.gameForm.start20.disabled = false;
     document.gameForm.ranking.disabled = false;
 }
 
