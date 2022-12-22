@@ -17,6 +17,7 @@ var countTimer = 13;
 var countTimer20 = 23;
 // タップ回数カウンター
 var counter = 0;
+var counter20 = 0;
 // 「tapFlag」的のタップ可否設定
 var tapFlag = false;
 
@@ -49,6 +50,38 @@ function startGame20() {
 }
 
 // 【mBaaS】データの保存
+function saveScore (name, score) {
+    // **********【問題１】名前とスコアを保存しよう！**********
+    var GameScore = ncmb.DataStore("GameScore");
+// クラスインスタンスを生成
+var gameScore = new GameScore();
+// 保存先クラスを作成
+var highScore = ncmb.DataStore("GameScore");
+// 値を設定
+gameScore.set("name", name);
+gameScore.set("score", score);
+// 保存を実施
+gameScore.save()
+         .then(function (){
+             // 保存に成功した場合の処理
+             console.log("保存に成功しました。");
+         })
+         .catch(function (error){
+             // 保存に失敗した場合の処理
+             console.log("保存に失敗しました。エラー:" + error); 
+         });
+         
+// scoreの降順でデータ5件を取得するように設定する
+highScore.order("score", true)
+.limit(5) .fetchAll()
+.then(function(results){
+// 検索に成功した場合の処理
+console.log("検索に成功しました。");
+// テーブルにデータをセット
+setData(results);
+})
+
+
 function saveScore (name, score) {
     // **********【問題１】名前とスコアを保存しよう！**********
     var GameScore = ncmb.DataStore("GameScore");
@@ -158,6 +191,23 @@ function imputName(count){
     document.gameForm.ranking.disabled = false;
 }
 
+
+
+function imputName20(count){
+    // 入力アラートを表示
+	var name = window.prompt("名前を入力してください", "");
+    if (name == null || name == "") {
+        $("#list-page p").html("保存がキャンセルされました");        
+    } else {
+        // スコアと入力した名前を保存
+        saveScore(name, count);
+        $("#list-page p").html(name + "さんのスコアは" + String(count) + "連打でした"); 
+    }
+    // ボタンの有効化
+    document.gameForm.start.disabled = false;
+    document.gameForm.start20.disabled = false;
+    document.gameForm.ranking.disabled = false;
+}
 // タップ数カウント
 function tapCount() {
     if (tapFlag) {
