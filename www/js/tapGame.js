@@ -92,10 +92,10 @@ function saveScore20 (name, score) {
 // クラスインスタンスを生成
 var gameScore20 = new GameScore20();
 // 保存先クラスを作成
-var highScore = ncmb.DataStore("GameScore20");
+var highScore20 = ncmb.DataStore("GameScore20");
 // 値を設定
 gameScore20.set("name", name);
-gameScore20.set("score20", score);
+gameScore20.set("score", score);
 // 保存を実施
 gameScore20.save()
          .then(function (){
@@ -108,7 +108,7 @@ gameScore20.save()
          });
          
 // scoreの降順でデータ5件を取得するように設定する
-highScore.order("score20", true)
+highScore20.order("score", true)
 .limit(5) .fetchAll()
 .then(function(results){
 // 検索に成功した場合の処理
