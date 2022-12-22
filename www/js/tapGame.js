@@ -80,20 +80,21 @@ console.log("検索に成功しました。");
 // テーブルにデータをセット
 setData(results);
 })
+}
 
 
-function saveScore (name, score) {
+function saveScore20 (name, score) {
     // **********【問題１】名前とスコアを保存しよう！**********
     var GameScore = ncmb.DataStore("GameScore");
 // クラスインスタンスを生成
-var gameScore = new GameScore();
+var gameScore20 = new GameScore();
 // 保存先クラスを作成
-var highScore = ncmb.DataStore("GameScore");
+var highScore = ncmb.DataStore("GameScore20");
 // 値を設定
-gameScore.set("name", name);
-gameScore.set("score", score);
+gameScore20.set("name", name);
+gameScore20.set("score", score);
 // 保存を実施
-gameScore.save()
+gameScore20.save()
          .then(function (){
              // 保存に成功した場合の処理
              console.log("保存に成功しました。");
@@ -155,22 +156,22 @@ function countTime(time) {
 function countTime20(time) {
     if (time > 0){
         if (time >= 21) {
-            this.tapFlag = false;
+            this.tapFlag20 = false;
             $("#list-page p").html(String(time-20));
         } else if (time == 20) {
-            this.tapFlag = true;
+            this.tapFlag20 = true;
             $("#list-page p").html("スタート！");
         } else {
-            this.tapFlag = true;
+            this.tapFlag20 = true;
             $("#list-page p").html(String(time));
         }
         this.countTimer20 -= 1;
         // １秒後にcountTime()を呼び出す
         setTimeout("countTime20(countTimer20)",1000);
     } else {
-        this.tapFlag = false;
+        this.tapFlag20 = false;
         $("#list-page p").html("タイムアップ！");
-        imputName(this.counter20);
+        imputName20(this.counter20);
     }    
 }
 
@@ -200,7 +201,7 @@ function imputName20(count){
         $("#list-page p").html("保存がキャンセルされました");        
     } else {
         // スコアと入力した名前を保存
-        saveScore(name, count);
+        saveScore20(name, count);
         $("#list-page p").html(name + "さんのスコアは" + String(count) + "連打でした"); 
     }
     // ボタンの有効化
@@ -213,5 +214,11 @@ function tapCount() {
     if (tapFlag) {
         this.counter += 1;
         $("#list-page strong").html(String(this.counter));
+    }
+}
+function tapCount20() {
+    if (tapFlag20) {
+        this.counter20 += 1;
+        $("#list-page strong").html(String(this.counter20));
     }
 }
