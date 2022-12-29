@@ -17,7 +17,7 @@ var countTimer = 13;
 var countTimer20 = 23;
 // タップ回数カウンター
 var counter = 0;
-var counter20 = 0;
+
 // 「tapFlag」的のタップ可否設定
 var tapFlag = false;
 var tapFlag20 = false;
@@ -76,7 +76,7 @@ gameScore.save()
          
 // scoreの降順でデータ5件を取得するように設定する
 highScore.order("score", true)
-.limit(5) .fetchAll()
+.limit(7) .fetchAll()
 .then(function(results){
 // 検索に成功した場合の処理
 console.log("検索に成功しました。");
@@ -109,7 +109,7 @@ gameScore20.save()
          
 // scoreの降順でデータ5件を取得するように設定する
 highScore20.order("score", true)
-.limit(5) .fetchAll()
+.limit(7) .fetchAll()
 .then(function(results){
 // 検索に成功した場合の処理
 console.log("検索に成功しました。");
@@ -165,16 +165,16 @@ function countTime20(time) {
             this.tapFlag20 = true;
             $("#list-page p").html("スタート！");
         } else {
-            this.tapFlag20 = true;
+            this.tapFlag = true;
             $("#list-page p").html(String(time));
         }
         this.countTimer20 -= 1;
         // １秒後にcountTime()を呼び出す
         setTimeout("countTime20(countTimer20)",1000);
     } else {
-        this.tapFlag20 = false;
+        this.tapFlag = false;
         $("#list-page p").html("タイムアップ！");
-        imputName20(this.counter20);
+        imputName20(this.counter);
     }    
 }
 
@@ -219,9 +219,4 @@ function tapCount() {
         $("#list-page strong").html(String(this.counter));
     }
 }
-function tapCount20() {
-    if (tapFlag20) {
-        this.counter20 += 1;
-        $("#list-page strong").html(String(this.counter20));
-    }
-}
+
