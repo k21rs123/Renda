@@ -20,7 +20,7 @@ var counter = 0;
 
 // 「tapFlag」的のタップ可否設定
 var tapFlag = false;
-var tapFlag20 = false;
+
 
 // 「Start」ボタン押下時の処理
 function startGame() {
@@ -159,10 +159,10 @@ function countTime(time) {
 function countTime20(time) {
     if (time > 0){
         if (time >= 21) {
-            this.tapFlag20 = false;
+            this.tapFlag = false;
             $("#list-page p").html(String(time-20));
         } else if (time == 20) {
-            this.tapFlag20 = true;
+            this.tapFlag = true;
             $("#list-page p").html("スタート！");
         } else {
             this.tapFlag = true;
