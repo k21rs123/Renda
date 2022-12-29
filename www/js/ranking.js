@@ -43,15 +43,15 @@ function setData(array) {
         score.innerHTML = array[i].score + "連打";
     }   
 }
-function setData20(array) {
-   var table = document.getElementById("rankingTable20");
+function setData20s(array) {
+   var table = document.getElementById("rankingTable");
     for (i=0; i<array.length; i++) {
         // 名前の設定
-        var name = table20.rows[i].cells[1];
-        name.innerHTML = array[i].name20 + "さん";
+        var name = table.rows[i].cells[1];
+        name.innerHTML = array[i].name + "さん";
         // スコアの設定
-        var score = table20.rows[i].cells[2];
-        score.innerHTML = array[i].score20 + "連打";
+        var score = table.rows[i].cells[2];
+        score.innerHTML = array[i].score + "連打";
     }   
 }
 

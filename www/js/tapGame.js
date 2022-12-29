@@ -114,7 +114,7 @@ highScore20.order("score", true)
 // 検索に成功した場合の処理
 console.log("検索に成功しました。");
 // テーブルにデータをセット
-setData(results);
+setData20s(results);
 })
 .catch(function(error){
 // 検索に失敗した場合の処理
